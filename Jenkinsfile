@@ -22,7 +22,8 @@ timeout(time: 60, unit: 'SECONDS') {
         }
 
         stage('Archive') {
-            archiveArtifacts artifacts: "build/libs/${RELEASENAME}"
+//            archiveArtifacts artifacts: "build/libs/${RELEASENAME}"
+              archiveArtifacts "build/${RELEASENAME}"
         }    
     }
 }
