@@ -1,14 +1,16 @@
 //START-OF-SCRIPT
 //comment1
 timeout(time: 60, unit: 'SECONDS') {
-    node('agent1') {
+      node {
+//    node('agent1') {
         def RELEASENAME = "webapp.war"
 
         properties([
             pipelineTriggers([pollSCM('H/1 * * * *')])
         ])
         
-        def GRADLE_HOME = tool name: 'gradle-4.10.2', type: 'hudson.plugins.gradle.GradleInstallation'
+//        def GRADLE_HOME = tool name: 'gradle-4.10.2', type: 'hudson.plugins.gradle.GradleInstallation'
+        def GRADLE_HOME = "/opt/gradle/gradle-4.10.2"
         sh "${GRADLE_HOME}/bin/gradle tasks"
 
         stage('Clone') {
