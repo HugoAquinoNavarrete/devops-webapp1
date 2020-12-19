@@ -6,7 +6,7 @@ timeout(time: 60, unit: 'SECONDS') {
         def RELEASENAME = "webapp.war"
 
         properties([
-            pipelineTriggers([pollSCM('H/1 * * * *')])
+            pipelineTriggers([pollSCM('H/5 * * * *')])
         ])
         
 //        def GRADLE_HOME = tool name: 'gradle-4.10.2', type: 'hudson.plugins.gradle.GradleInstallation'
@@ -21,9 +21,9 @@ timeout(time: 60, unit: 'SECONDS') {
             sh "${GRADLE_HOME}/bin/gradle build -PwarName=${RELEASENAME} --info"
         }
 
-        stage('Archive') {
-            archiveArtifacts "build/libs/${RELEASENAME}"
-        }    
+        //stage('Archive') {
+          //  archiveArtifacts "build/libs/${RELEASENAME}"
+        //}    
     }
 }
 //END-OF-SCRIPT
