@@ -3,7 +3,7 @@
 timeout(time: 60, unit: 'SECONDS') {
       node {
 //    node('agent1') {
-        def RELEASENAME = "webapp.war"
+        def RELEASENAME = "webapp-1.0.war"
 
         properties([
             pipelineTriggers([pollSCM('H/5 * * * *')])
@@ -22,8 +22,8 @@ timeout(time: 60, unit: 'SECONDS') {
         }
 
         stage('Archive') {
-//            archiveArtifacts artifacts: "build/libs/${RELEASENAME}"
-              archiveArtifacts "${RELEASENAME}"
+            archiveArtifacts artifacts: "build/libs/${RELEASENAME}"
+//              archiveArtifacts "${RELEASENAME}"
         }    
     }
 }
